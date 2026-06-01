@@ -1,0 +1,41 @@
+{
+  "run": {
+    "name": "smoke",
+    "output_dir": "runs",
+    "seed": 7
+  },
+  "environment": {
+    "width": 288,
+    "height": 512,
+    "bird_x": 64,
+    "bird_radius": 12,
+    "gravity": 0.45,
+    "flap_velocity": -7.5,
+    "max_velocity": 10.0,
+    "pipe_width": 52,
+    "pipe_gap": 120,
+    "pipe_spacing": 155,
+    "scroll_speed": 2.4,
+    "spawn_x": 320,
+    "alive_reward": 0.01,
+    "pass_reward": 1.0,
+    "death_penalty": -1.0
+  },
+  "trainer": {
+    "population_size": 18,
+    "generations": 3,
+    "hidden_units": 6,
+    "max_hidden_units": 18,
+    "elites": 3,
+    "tournament_size": 3,
+    "episodes_per_genome": 2,
+    "evaluation_episodes": 4,
+    "max_steps": 1800,
+    "novelty_weight": 0.1,
+    "complexity_penalty": 0.001,
+    "checkpoint_interval": 1,
+    "target_score": 20,
+    "curriculum": true,
+    "replay_best": true
+  }
+}

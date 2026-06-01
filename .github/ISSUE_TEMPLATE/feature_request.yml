@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest a new capability or improvement.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user need or learning gap does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should FlappyLearn do?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Training
+        - Simulator
+        - Visualization
+        - Documentation
+        - Community
+        - Tooling
+    validations:
+      required: true

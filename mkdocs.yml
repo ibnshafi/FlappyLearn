@@ -1,0 +1,36 @@
+site_name: FlappyLearn
+site_description: Neuroevolution playground for learning Flappy Bird from scratch.
+repo_url: https://github.com/flappylearn/flappylearn
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Architecture: ARCHITECTURE.md
+  - Concepts:
+      - Neuroevolution: concepts/neuroevolution.md
+      - NEAT: concepts/neat.md
+      - Neural Networks: concepts/neural-networks.md
+      - Fitness Functions: concepts/fitness-functions.md
+      - Genetic Algorithms: concepts/genetic-algorithms.md
+      - Selection: concepts/selection.md
+      - Mutation: concepts/mutation.md
+      - Crossover: concepts/crossover.md
+  - Reference:
+      - Configuration: reference/configuration.md
+      - Visualizations: reference/visualizations.md
+  - Community:
+      - First-Time Contributors: community/first-time-contributors.md
+  - Roadmap: ROADMAP.md
+  - Launch:
+      - GitHub Profile: launch/github-profile.md
+      - Marketing Assets: launch/marketing-assets.md
+      - Visual Specifications: launch/visual-specifications.md
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables

@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flappylearn"
+version = "0.1.0"
+description = "Autonomous learning system for Flappy Bird using self-adaptive neuroevolution."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+  { name = "FlappyLearn contributors" }
+]
+keywords = [
+  "flappy-bird",
+  "neuroevolution",
+  "machine-learning",
+  "genetic-algorithm",
+  "neat",
+  "reinforcement-learning",
+  "education"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Education",
+  "Topic :: Games/Entertainment :: Simulation",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed"
+]
+dependencies = [
+  "numpy>=1.26"
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "mypy>=1.10",
+  "pre-commit>=3.7",
+  "pytest>=8.0",
+  "ruff>=0.5",
+  "twine>=5.1"
+]
+docs = [
+  "mkdocs>=1.6",
+  "mkdocs-material>=9.5"
+]
+
+[project.urls]
+Documentation = "https://flappylearn.github.io/flappylearn/"
+Issues = "https://github.com/flappylearn/flappylearn/issues"
+Source = "https://github.com/flappylearn/flappylearn"
+
+[project.scripts]
+flappylearn = "flappylearn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+ignore = ["N806"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["flappylearn"]
+warn_unused_configs = true
+ignore_missing_imports = true

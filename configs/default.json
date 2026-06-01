@@ -1,0 +1,41 @@
+{
+  "run": {
+    "name": "flappylearn",
+    "output_dir": "runs",
+    "seed": 42
+  },
+  "environment": {
+    "width": 288,
+    "height": 512,
+    "bird_x": 64,
+    "bird_radius": 12,
+    "gravity": 0.45,
+    "flap_velocity": -7.5,
+    "max_velocity": 10.0,
+    "pipe_width": 52,
+    "pipe_gap": 110,
+    "pipe_spacing": 155,
+    "scroll_speed": 2.5,
+    "spawn_x": 320,
+    "alive_reward": 0.01,
+    "pass_reward": 1.0,
+    "death_penalty": -1.0
+  },
+  "trainer": {
+    "population_size": 96,
+    "generations": 120,
+    "hidden_units": 10,
+    "max_hidden_units": 64,
+    "elites": 8,
+    "tournament_size": 5,
+    "episodes_per_genome": 4,
+    "evaluation_episodes": 12,
+    "max_steps": 12000,
+    "novelty_weight": 0.15,
+    "complexity_penalty": 0.0008,
+    "checkpoint_interval": 5,
+    "target_score": 200,
+    "curriculum": true,
+    "replay_best": true
+  }
+}
