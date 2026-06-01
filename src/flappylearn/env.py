@@ -7,7 +7,6 @@ import numpy as np
 
 from flappylearn.config import EnvConfig
 
-
 OBSERVATION_SIZE = 10
 
 
@@ -174,8 +173,7 @@ class FlappyEnv:
             gap_top = pipe.gap_y - self.config.pipe_gap * 0.5
             gap_bottom = pipe.gap_y + self.config.pipe_gap * 0.5
             outside_gap = (
-                self.bird_y - self.config.bird_radius < gap_top
-                or self.bird_y + self.config.bird_radius > gap_bottom
+                self.bird_y - self.config.bird_radius < gap_top or self.bird_y + self.config.bird_radius > gap_bottom
             )
             if outside_gap:
                 return True

@@ -1,6 +1,6 @@
 site_name: FlappyLearn
 site_description: Neuroevolution playground for learning Flappy Bird from scratch.
-repo_url: https://github.com/flappylearn/flappylearn
+repo_url: https://github.com/ibnshafi/FlappyLearn
 theme:
   name: material
   features:

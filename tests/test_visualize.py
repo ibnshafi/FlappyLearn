@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 from flappylearn.visualize import write_metrics_html, write_replay_html
 

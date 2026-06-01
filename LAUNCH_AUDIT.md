@@ -301,6 +301,7 @@ CI/CD:
 - [x] Release workflow added.
 - [x] Dependabot added.
 - [x] Pre-commit configured.
+- [x] Docs build added to CI.
 - [ ] Add docs deploy workflow after GitHub Pages branch policy is chosen.
 
 Security:

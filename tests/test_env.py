@@ -1,6 +1,6 @@
 import numpy as np
 
-from flappylearn.env import FlappyEnv, OBSERVATION_SIZE
+from flappylearn.env import OBSERVATION_SIZE, FlappyEnv
 
 
 def test_environment_is_deterministic_for_seed_and_actions():

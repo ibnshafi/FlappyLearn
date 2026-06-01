@@ -5,7 +5,7 @@ Thanks for helping make machine learning easier to see, understand, and modify. 
 ## Setup
 
 ```bash
-git clone https://github.com/flappylearn/flappylearn.git
+git clone https://github.com/ibnshafi/FlappyLearn.git
 cd flappylearn
 python -m venv .venv
 .venv\Scripts\Activate.ps1

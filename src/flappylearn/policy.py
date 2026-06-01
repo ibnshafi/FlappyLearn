@@ -1,22 +1,23 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
 import numpy as np
 
+if TYPE_CHECKING:
+    from flappylearn.genome import AdaptiveCircuitGenome
+
 
 class Policy(Protocol):
-    def reset(self) -> None:
-        ...
+    def reset(self) -> None: ...
 
-    def act(self, observation: np.ndarray) -> int:
-        ...
+    def act(self, observation: np.ndarray) -> int: ...
 
 
 @dataclass
 class CircuitPolicy:
-    genome: "AdaptiveCircuitGenome"
+    genome: AdaptiveCircuitGenome
     deterministic: bool = True
 
     def __post_init__(self) -> None:
@@ -51,6 +52,3 @@ class NoopPolicy:
 
     def act(self, observation: np.ndarray) -> int:
         return 0
-
-
-from flappylearn.genome import AdaptiveCircuitGenome

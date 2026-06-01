@@ -177,7 +177,11 @@ class DiscoveryTrainer:
 
             if is_new_best and self.config.trainer.replay_best:
                 self._write_best_replay(generation)
-            if generation % self.config.trainer.checkpoint_interval == 0 or generation == self.config.trainer.generations - 1:
+            should_checkpoint = (
+                generation % self.config.trainer.checkpoint_interval == 0
+                or generation == self.config.trainer.generations - 1
+            )
+            if should_checkpoint:
                 self._save_checkpoint(generation, metrics)
 
             print(
@@ -250,8 +254,7 @@ class DiscoveryTrainer:
         metadata = {
             "generation": generation,
             "eval": {
-                name: value.tolist() if hasattr(value, "tolist") else value
-                for name, value in eval_result.items()
+                name: value.tolist() if hasattr(value, "tolist") else value for name, value in eval_result.items()
             },
             "config": self.config.to_dict(),
             "curriculum": self.curriculum.to_dict(),

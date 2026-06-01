@@ -87,10 +87,7 @@ def evaluate_genome(
     seeds: list[int],
     max_steps: int,
 ) -> dict[str, Any]:
-    results = [
-        run_episode(CircuitPolicy(genome, deterministic=True), env_config, seed, max_steps)
-        for seed in seeds
-    ]
+    results = [run_episode(CircuitPolicy(genome, deterministic=True), env_config, seed, max_steps) for seed in seeds]
     scores = np.array([result.score for result in results], dtype=np.float64)
     rewards = np.array([result.reward for result in results], dtype=np.float64)
     steps = np.array([result.steps for result in results], dtype=np.float64)
@@ -107,8 +104,7 @@ def evaluate_genome(
 
 def evaluate_random_baseline(env_config: EnvConfig, seeds: list[int], max_steps: int) -> dict[str, Any]:
     results = [
-        run_episode(RandomPolicy(probability=0.11, seed=seed + 1009), env_config, seed, max_steps)
-        for seed in seeds
+        run_episode(RandomPolicy(probability=0.11, seed=seed + 1009), env_config, seed, max_steps) for seed in seeds
     ]
     return summarize_episode_results(results)
 

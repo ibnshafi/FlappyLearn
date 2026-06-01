@@ -139,7 +139,8 @@ def cmd_train(args: argparse.Namespace) -> int:
 def cmd_eval(args: argparse.Namespace) -> int:
     config = _load_with_overrides(args)
     genome, metadata = load_genome(args.checkpoint)
-    max_steps = args.max_steps or int(metadata.get("config", {}).get("trainer", {}).get("max_steps", config.trainer.max_steps))
+    checkpoint_max_steps = metadata.get("config", {}).get("trainer", {}).get("max_steps", config.trainer.max_steps)
+    max_steps = args.max_steps or int(checkpoint_max_steps)
     seeds = [int(args.eval_seed + index * 9973) for index in range(args.episodes)]
     result = evaluate_genome(genome, config.environment, seeds, max_steps)
     print(json.dumps(_json_ready(result), indent=2, sort_keys=True))
@@ -149,7 +150,8 @@ def cmd_eval(args: argparse.Namespace) -> int:
 def cmd_replay(args: argparse.Namespace) -> int:
     config = _load_with_overrides(args)
     genome, metadata = load_genome(args.checkpoint)
-    max_steps = args.max_steps or int(metadata.get("config", {}).get("trainer", {}).get("max_steps", config.trainer.max_steps))
+    checkpoint_max_steps = metadata.get("config", {}).get("trainer", {}).get("max_steps", config.trainer.max_steps)
+    max_steps = args.max_steps or int(checkpoint_max_steps)
     replay = record_genome_replay(genome, config.environment, args.eval_seed, max_steps)
     json_output = args.json_output or args.output.with_suffix(".json")
     json_output.parent.mkdir(parents=True, exist_ok=True)

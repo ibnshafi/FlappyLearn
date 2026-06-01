@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 import math
 import uuid
+from dataclasses import dataclass, field
 from typing import Any
 
 import numpy as np
-
 
 ACTIVATIONS = ("tanh", "relu", "elu")
 
@@ -41,7 +40,7 @@ class MutationParams:
     activation_rate: float = 0.05
     threshold_sigma: float = 0.05
 
-    def adapted(self, rng: np.random.Generator) -> "MutationParams":
+    def adapted(self, rng: np.random.Generator) -> MutationParams:
         def positive(value: float, spread: float, low: float, high: float) -> float:
             return float(np.clip(value * math.exp(rng.normal(0.0, spread)), low, high))
 
@@ -65,7 +64,7 @@ class MutationParams:
         }
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "MutationParams":
+    def from_dict(cls, data: dict[str, Any]) -> MutationParams:
         return cls(**{key: float(value) for key, value in data.items()})
 
 
@@ -96,7 +95,7 @@ class AdaptiveCircuitGenome:
         rng: np.random.Generator,
         input_size: int,
         hidden_units: int,
-    ) -> "AdaptiveCircuitGenome":
+    ) -> AdaptiveCircuitGenome:
         scale = 1.0 / math.sqrt(max(1, input_size))
         activations = [str(rng.choice(ACTIVATIONS)) for _ in range(hidden_units)]
         return cls(
@@ -130,7 +129,7 @@ class AdaptiveCircuitGenome:
         logit = float(np.dot(self.w_out, new_memory) + np.dot(self.w_direct, obs) + self.b_out)
         return logit, new_memory
 
-    def copy(self) -> "AdaptiveCircuitGenome":
+    def copy(self) -> AdaptiveCircuitGenome:
         return AdaptiveCircuitGenome(
             input_size=self.input_size,
             w_in=self.w_in.copy(),
@@ -148,7 +147,7 @@ class AdaptiveCircuitGenome:
             rng=np.random.default_rng(),
         )
 
-    def mutate(self, rng: np.random.Generator, max_hidden_units: int) -> "AdaptiveCircuitGenome":
+    def mutate(self, rng: np.random.Generator, max_hidden_units: int) -> AdaptiveCircuitGenome:
         child = self.copy()
         child.genome_id = _new_id()
         child.parent_ids = (self.genome_id,)
@@ -219,9 +218,9 @@ class AdaptiveCircuitGenome:
     def crossover(
         cls,
         rng: np.random.Generator,
-        parent_a: "AdaptiveCircuitGenome",
-        parent_b: "AdaptiveCircuitGenome",
-    ) -> "AdaptiveCircuitGenome":
+        parent_a: AdaptiveCircuitGenome,
+        parent_b: AdaptiveCircuitGenome,
+    ) -> AdaptiveCircuitGenome:
         if parent_b.hidden_size > parent_a.hidden_size:
             parent_a, parent_b = parent_b, parent_a
         child = parent_a.copy()
@@ -279,7 +278,7 @@ class AdaptiveCircuitGenome:
         }
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "AdaptiveCircuitGenome":
+    def from_dict(cls, data: dict[str, Any]) -> AdaptiveCircuitGenome:
         return cls(
             input_size=int(data["input_size"]),
             w_in=np.asarray(data["w_in"], dtype=np.float64),

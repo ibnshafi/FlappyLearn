@@ -61,7 +61,5 @@ def load_population_checkpoint(path: str | Path) -> dict[str, Any]:
         payload = json.load(handle)
     if payload.get("kind") != "flappylearn.population_checkpoint":
         raise ValueError(f"{checkpoint} is not a population checkpoint")
-    payload["population"] = [
-        AdaptiveCircuitGenome.from_dict(raw) for raw in payload.get("population", [])
-    ]
+    payload["population"] = [AdaptiveCircuitGenome.from_dict(raw) for raw in payload.get("population", [])]
     return payload

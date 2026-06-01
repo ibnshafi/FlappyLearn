@@ -2,7 +2,7 @@
 
 > Watch an AI discover Flappy Bird from scratch with neuroevolution, live metrics, replay exports, and beginner-friendly learning material.
 
-[![CI](https://github.com/flappylearn/flappylearn/actions/workflows/ci.yml/badge.svg)](https://github.com/flappylearn/flappylearn/actions/workflows/ci.yml)
+[![CI](https://github.com/ibnshafi/FlappyLearn/actions/workflows/ci.yml/badge.svg)](https://github.com/ibnshafi/FlappyLearn/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](pyproject.toml)
 [![Project status](https://img.shields.io/badge/status-public%20launch%20ready-16a34a.svg)](LAUNCH_AUDIT.md)
@@ -55,7 +55,7 @@ Add these assets before a public announcement:
 ## Quick Start
 
 ```bash
-git clone https://github.com/flappylearn/flappylearn.git
+git clone https://github.com/ibnshafi/FlappyLearn.git
 cd flappylearn
 python -m pip install -e ".[dev]"
 pytest
@@ -269,5 +269,3 @@ FlappyLearn is released under the [MIT License](LICENSE). MIT is the best fit fo
 ## Credits
 
 FlappyLearn is built by its contributors for people who want machine learning systems that are understandable, hackable, and fun to watch.
-#   F l a p p y L e a r n  
- 

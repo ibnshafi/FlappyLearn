@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, fields, replace
 import json
+from collections.abc import Mapping
+from dataclasses import asdict, dataclass, fields, replace
 from pathlib import Path
-from typing import Any, Mapping, TypeVar
-
+from typing import Any, TypeVar
 
 T = TypeVar("T")
 

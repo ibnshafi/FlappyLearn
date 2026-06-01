@@ -66,9 +66,21 @@ def write_replay_html(replay_path: str | Path, output_path: str | Path) -> None:
   <meta charset="utf-8">
   <title>FlappyLearn Replay</title>
   <style>
-    body {{ margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0f172a; color: white; font-family: system-ui, sans-serif; }}
+    body {{
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0f172a;
+      color: white;
+      font-family: system-ui, sans-serif;
+    }}
     main {{ display: grid; gap: 12px; justify-items: center; }}
-    canvas {{ background: linear-gradient(#7dd3fc, #e0f2fe 62%, #86efac 62%); border: 1px solid #334155; border-radius: 8px; }}
+    canvas {{
+      background: linear-gradient(#7dd3fc, #e0f2fe 62%, #86efac 62%);
+      border: 1px solid #334155;
+      border-radius: 8px;
+    }}
     .meta {{ color: #dbeafe; }}
   </style>
 </head>
@@ -153,17 +165,16 @@ def _line_chart(series: list[tuple[str, list[float], str]]) -> str:
             f"<title>{html.escape(label)}</title></path>"
         )
     legend = " ".join(
-        f'<span style="color:{color}; margin-right:18px;">{html.escape(label)}</span>'
-        for label, _, color in series
+        f'<span style="color:{color}; margin-right:18px;">{html.escape(label)}</span>' for label, _, color in series
     )
     return f"""
 <div>{legend}</div>
 <svg viewBox="0 0 {width} {height}" width="100%" role="img" aria-label="Learning curves">
   <rect x="0" y="0" width="{width}" height="{height}" fill="#fff" />
-  <line x1="{pad}" y1="{height-pad}" x2="{width-pad}" y2="{height-pad}" stroke="#9ca3af" />
-  <line x1="{pad}" y1="{pad}" x2="{pad}" y2="{height-pad}" stroke="#9ca3af" />
-  <text x="{pad}" y="{pad-12}" fill="#374151">{y_max:.2f}</text>
-  <text x="{pad}" y="{height-pad+28}" fill="#374151">generation</text>
+  <line x1="{pad}" y1="{height - pad}" x2="{width - pad}" y2="{height - pad}" stroke="#9ca3af" />
+  <line x1="{pad}" y1="{pad}" x2="{pad}" y2="{height - pad}" stroke="#9ca3af" />
+  <text x="{pad}" y="{pad - 12}" fill="#374151">{y_max:.2f}</text>
+  <text x="{pad}" y="{height - pad + 28}" fill="#374151">generation</text>
   {"".join(paths)}
 </svg>
 """
@@ -186,7 +197,5 @@ def _metrics_table(records: list[dict[str, Any]]) -> str:
         )
     return (
         "<table><thead><tr><th>Generation</th><th>Eval mean</th><th>Population mean</th>"
-        "<th>Best max</th><th>Novelty</th><th>Curriculum</th></tr></thead><tbody>"
-        + "".join(rows)
-        + "</tbody></table>"
+        "<th>Best max</th><th>Novelty</th><th>Curriculum</th></tr></thead><tbody>" + "".join(rows) + "</tbody></table>"
     )
